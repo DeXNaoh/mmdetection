@@ -74,7 +74,7 @@ train_pipeline = [
 ]
 
 test_pipeline = [
-    dict(type='LoadImageFromFile', backend_args=_base_.backend_args),
+    dict(type='LoadImageFromFile', backend_args='pillow'),
     dict(type='Resize', scale=img_scale, keep_ratio=True),
     dict(
         type='Pad',
