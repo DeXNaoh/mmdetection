@@ -83,7 +83,7 @@ test_pipeline = [
                 size_divisor=32,
                 pad_val=dict(img=(114.0, 114.0, 114.0))),
             dict(type='LoadTrackAnnotations'),
-         )],
+         ]),
     dict(type='PackTrackInputs')
 ]
 train_dataloader = dict(
