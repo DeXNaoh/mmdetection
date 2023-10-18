@@ -81,7 +81,7 @@ test_pipeline = [
         size_divisor=32,
         pad_val=dict(img=(114.0, 114.0, 114.0))),
 
-    dict(type='PackDetInputs')
+    dict(type='PackTrackInputs')
 ]
 train_dataloader = dict(
     _delete_=True,
