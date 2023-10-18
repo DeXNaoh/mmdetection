@@ -74,10 +74,9 @@ train_pipeline = [
 ]
 
 test_pipeline = [
-    dict(type='LoadImageFromFile', key='lq'),
-    dict(type='LoadImageFromFile', key='gt'), 
+    dict(type='LoadImageFromFile'),
     dict(type='TransformBroadcaster',
-         mapping={'img': ['lq', 'gt']},
+
          transforms=[
             dict(type='Resize', scale=img_scale, keep_ratio=True),
             dict(
