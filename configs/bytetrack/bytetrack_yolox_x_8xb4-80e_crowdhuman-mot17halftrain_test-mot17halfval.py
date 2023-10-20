@@ -74,15 +74,19 @@ train_pipeline = [
 ]
 
 test_pipeline = [
-    dict(type='LoadImageFromFile', backend_args=_base_.backend_args),
-    dict(type='Resize', scale=img_scale, backend='pillow', keep_ratio=True),
     dict(
-        type='Pad',
-        size_divisor=32,
-        pad_val=dict(img=(114.0, 114.0, 114.0))),
-    dict(type='LoadTrackAnnotations'),
+        type='TransformBroadcaster',
+        transforms=[
+            dict(type='LoadImageFromFile', backend_args=_base_.backend_args),
+            dict(type='Resize', scale=img_scale, keep_ratio=True),
+            dict(
+                type='Pad',
+                size_divisor=32,
+                pad_val=dict(img=(114.0, 114.0, 114.0))),
+            dict(type='LoadTrackAnnotations'),
+        ]),
     dict(type='PackTrackInputs')
-]    
+]   
 train_dataloader = dict(
     _delete_=True,
     batch_size=batch_size,
